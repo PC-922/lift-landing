@@ -4,12 +4,13 @@ Standalone Spanish and English landing page for LIFT. The project contains no Li
 
 ## Replace the brand and app previews
 
-- Replace `assets/lift-wordmark.svg` to change the header logo.
-- Put real screen captures in `assets/screens/` and set their paths in `src/config.js` under `previews.routine`, `previews.workout`, and `previews.stats`. Suggested paths are `assets/screens/routine.png`, `assets/screens/workout.png`, and `assets/screens/stats.png`. Leave a value empty to show the built-in preview instead.
+- The header uses the app icon at `assets/real-app/lift-app-icon.jpeg`; replace this file or change `logo` in `src/config.js`.
+- The carousel reads its images from the `screenshots` array in `src/config.js`. Replace those files or update their `src` values. Each entry's `altKey` points to accessible Spanish and English descriptions in `src/main.js`.
+- The carousel advances every 5.6 seconds. People can swipe, choose a dot, or use the previous/next and pause/play controls. A manual change pauses autoplay until it is resumed; it also pauses while hovered, while keyboard focus is inside, when the page is in the background, and when reduced motion is requested.
 - Set `links.iosAppStore` in `src/config.js` when the App Store page is available. Until then, the white iOS button stays visible but inactive.
 - `links.web` is the destination for “Abrir Lift Web”. It points to `web/`, which resolves to `/web/` on a root domain.
 
-The preview captures should contain only the app screen. The landing page supplies the phone frame.
+The screenshots are the original app captures; the landing page supplies the phone frame.
 
 ## Run locally
 

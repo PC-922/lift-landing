@@ -1,7 +1,2 @@
-Add screen-only captures here, without a device frame:
-
-- `routine.png`
-- `workout.png`
-- `stats.png`
-
-Then set each matching path in `src/config.js`. Empty paths keep the built-in UI previews visible.
+The current LIFT app captures are stored in `../real-app/` and listed in `src/config.js`.
+Replace those files or update the `screenshots` array to add, remove, or reorder carousel slides.

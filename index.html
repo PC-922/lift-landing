@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0c0d0e" />
     <meta name="description" content="Entrena a tu manera con LIFT. Organiza tus rutinas, registra cada sesión y sigue tu evolución." />
-    <link rel="icon" type="image/svg+xml" href="assets/lift-mark.svg" />
+    <link rel="icon" type="image/jpeg" href="assets/real-app/lift-app-icon.jpeg" />
     <link rel="stylesheet" href="styles.css" />
     <title>LIFT — Entrena. Registra. Progresa.</title>
   </head>
@@ -13,7 +13,8 @@
     <main class="landing-shell">
       <header class="site-header">
         <a class="brand" href="./" aria-label="LIFT">
-          <img class="brand__logo" src="assets/lift-wordmark.svg" alt="LIFT" />
+          <img class="brand__mark" src="assets/real-app/lift-app-icon.jpeg" alt="" />
+          <span class="brand__name">LIFT</span>
         </a>
         <nav class="language-switch" aria-label="Idioma">
           <button class="language-switch__button is-active" type="button" data-language="es" aria-pressed="true">ES</button>
@@ -42,58 +43,24 @@
           <p class="android-note" data-i18n="androidNote">En Android, puedes instalar Lift Web desde el navegador.</p>
         </div>
 
-        <div class="previews" data-i18n-aria="previewsLabel" aria-label="Vistas de LIFT">
-          <article class="phone phone--routine" data-preview="routine" aria-label="Vista de rutina">
-            <div class="phone__screen">
-              <div class="phone-mock phone-mock--routine">
-                <div class="phone__status"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
-                <div class="phone__notch"></div>
-                <div class="phone__topbar"><span class="lime">‹</span><strong data-i18n="routineScreenTitle">Rutina - Día A</strong><span class="lime">•••</span></div>
-                <div class="routine-items">
-                  <div class="routine-item"><strong data-i18n="exerciseOne">Press inclinado</strong><small data-i18n="setsEight">3 series × 8 repeticiones</small><span>›</span></div>
-                  <div class="routine-item"><strong data-i18n="exerciseTwo">Apertura de hombro en máquina</strong><small data-i18n="setsTwelve">3 series × 12 repeticiones</small><span>›</span></div>
-                  <div class="routine-item"><strong data-i18n="exerciseThree">Aperturas con mancuernas</strong><small data-i18n="setsTwelve">3 series × 12 repeticiones</small><span>›</span></div>
-                </div>
-                <div class="phone-button" data-i18n="startRoutine">▶ Iniciar rutina</div>
-                <div class="phone__home"></div>
-              </div>
+        <section class="product-carousel" data-i18n-aria="carouselLabel" aria-label="Capturas de la app LIFT" aria-roledescription="carrusel">
+          <div class="phone-frame">
+            <div class="phone-frame__screen" data-carousel-screen>
+              <div class="carousel-slides" data-carousel-slides aria-live="off"></div>
             </div>
-          </article>
-
-          <article class="phone phone--workout" data-preview="workout" aria-label="Vista de entrenamiento en curso">
-            <div class="phone__screen">
-              <div class="phone-mock phone-mock--workout">
-                <div class="phone__status"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
-                <div class="phone__notch"></div>
-                <div class="phone__topbar"><span class="lime">‹</span><strong data-i18n="workoutScreenTitle">Rutina A</strong><span class="lime">•••</span></div>
-                <div class="progress-line"><span></span><small data-i18n="exerciseCount">2 de 5</small></div>
-                <h2 data-i18n="exerciseOne">Press inclinado</h2>
-                <p class="set-caption" data-i18n="setCaption">Serie 2 de 3</p>
-                <div class="set-list">
-                  <div class="set-row"><b>1</b><span>80 kg × 8</span><i class="checked">✓</i></div>
-                  <div class="set-row is-current"><b>2</b><span>80 kg × 8</span><i></i></div>
-                  <div class="set-row"><b>3</b><span>80 kg × 8</span><i></i></div>
-                </div>
-                <div class="rest-card"><small data-i18n="rest">Descanso</small><strong>01:24</strong><div><i>↺</i><b>Ⅱ</b><i>›</i></div></div>
-                <div class="phone__home"></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="phone phone--stats" data-preview="stats" aria-label="Vista de estadísticas">
-            <div class="phone__screen">
-              <div class="phone-mock phone-mock--stats">
-                <div class="phone__status"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
-                <div class="phone__notch"></div>
-                <div class="phone__topbar phone__topbar--center"><strong data-i18n="statsScreenTitle">Estadísticas</strong></div>
-                <div class="period-tabs"><b data-i18n="fourWeeks">4 sem</b><span data-i18n="twelveWeeks">12 sem</span><span data-i18n="oneYear">1 año</span></div>
-                <div class="chart-card"><strong data-i18n="volumeTitle">Volumen de entrenamiento</strong><div class="chart"><i style="--bar:26%"></i><i style="--bar:38%"></i><i style="--bar:52%"></i><i style="--bar:65%"></i><i style="--bar:48%"></i><i style="--bar:72%"></i><i style="--bar:86%"></i></div><div class="chart-labels"><span>S1</span><span>S2</span><span>S3</span><span>S4</span></div></div>
-                <div class="strength-card"><span data-i18n="strengthTitle">Evolución de fuerza</span><b>›</b></div>
-                <div class="phone__home"></div>
-              </div>
-            </div>
-          </article>
-        </div>
+          </div>
+          <div class="carousel-controls" data-carousel-controls data-i18n-aria="carouselControlsLabel" aria-label="Controles del carrusel">
+            <button class="carousel-control carousel-control--arrow" type="button" data-carousel-prev aria-label="Captura anterior">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg>
+            </button>
+            <div class="carousel-dots" data-carousel-dots role="group" aria-label="Elegir captura"></div>
+            <button class="carousel-control carousel-control--toggle" type="button" data-carousel-toggle aria-pressed="false">Pausar</button>
+            <button class="carousel-control carousel-control--arrow" type="button" data-carousel-next aria-label="Siguiente captura">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></svg>
+            </button>
+          </div>
+          <p class="visually-hidden" data-carousel-status aria-live="polite"></p>
+        </section>
       </section>
 
       <div class="section-rule" aria-hidden="true"></div>
