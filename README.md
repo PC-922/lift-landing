@@ -21,3 +21,7 @@ This is a dependency-free static page. Open `index.html` in a browser or serve t
 The workflow in `.github/workflows/pages.yml` publishes this project as the site root. In the repository settings, choose **GitHub Actions** as the Pages source. Add the custom domain in Pages settings after the domain is finalized.
 
 GitHub Pages can publish only one site for a custom domain. To serve Lift Web at `/web/` on the same domain, its build output must be included under this deployment's `web/` directory (or a reverse proxy must route that path). The source code remains in its separate Lift Web project. The `/web/` entry is ready in the landing config; deployment composition is a separate integration step.
+
+## iOS privacy and support pages
+
+The static bilingual pages live at `privacy/` and `support/` and are linked from the existing landing footer. Keep them in the same landing change; the Pages workflow publishes them from the site artifact. They use the contact supplied by PC922. Review the privacy copy and confirm the exact Pages URL before authorizing publication. Use the Pages deployment URL as the base; for a project site it includes the repository path. Pass the resulting HTTPS page URLs as `LIFT_PRIVACY_URL` and `LIFT_SUPPORT_URL` when building the iOS release. Do not assume the project URL is live until both routes resolve publicly.

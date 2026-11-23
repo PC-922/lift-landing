@@ -33,6 +33,9 @@ const translations = {
     featureLogBody: "Anota series, peso y repeticiones de forma clara.",
     featureProgressTitle: "Sigue tu progreso",
     featureProgressBody: "Observa tu evolución y mantén la constancia.",
+    iosResourcesLabel: "Recursos de LIFT para iOS",
+    iosPrivacy: "Privacidad de iOS",
+    iosSupport: "Soporte de iOS",
     iosPending: "Añade el enlace de App Store en src/config.js",
   },
   en: {
@@ -67,6 +70,9 @@ const translations = {
     featureLogBody: "Track sets, weight, and reps clearly.",
     featureProgressTitle: "Follow your progress",
     featureProgressBody: "See your progress and stay consistent.",
+    iosResourcesLabel: "LIFT for iOS resources",
+    iosPrivacy: "iOS privacy",
+    iosSupport: "iOS support",
     iosPending: "Add the App Store link in src/config.js",
   },
 };
