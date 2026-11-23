@@ -1,0 +1,16 @@
+:root {
+  color-scheme: dark;
+  background: #0c0d0e;
+  color: #f3f4f1;
+  font: 100% / 1.65 system-ui, sans-serif;
+}
+body { margin: 0; }
+main { max-width: 43rem; margin: auto; padding: 1.5rem clamp(1rem, 5vw, 3rem) 4rem; }
+header, footer { display: flex; gap: 1.25rem; align-items: center; }
+header > a:first-child { font-weight: 900; letter-spacing: .22em; }
+article { border-top: 1px solid #484b46; margin-block: 2rem; padding-top: 1.25rem; }
+h1 { font-size: clamp(1.9rem, 6vw, 3rem); line-height: 1.1; }
+h2 { font-size: 1.15rem; margin-bottom: .25rem; }
+p { margin-top: .25rem; }
+a { color: #dcf98f; text-underline-offset: .2em; overflow-wrap: anywhere; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: .3rem; }
