@@ -19,8 +19,6 @@ const translations = {
     previousImage: "Captura anterior",
     nextImage: "Siguiente captura",
     chooseImage: "Elegir captura",
-    pauseCarousel: "Pausar",
-    resumeCarousel: "Reanudar",
     slidePosition: "Captura {index} de {count}",
     routineImageAlt: "Detalle de una rutina de entrenamiento con ejercicios organizados.",
     workoutImageAlt: "Entrenamiento en curso con series y temporizador de descanso.",
@@ -57,8 +55,6 @@ const translations = {
     previousImage: "Previous screenshot",
     nextImage: "Next screenshot",
     chooseImage: "Choose screenshot",
-    pauseCarousel: "Pause",
-    resumeCarousel: "Play",
     slidePosition: "Screenshot {index} of {count}",
     routineImageAlt: "A workout routine with its exercises organized.",
     workoutImageAlt: "An active workout showing sets and a rest timer.",
@@ -101,14 +97,12 @@ const dotsContainer = document.querySelector("[data-carousel-dots]");
 const statusMessage = document.querySelector("[data-carousel-status]");
 const previousButton = document.querySelector("[data-carousel-prev]");
 const nextButton = document.querySelector("[data-carousel-next]");
-const toggleButton = document.querySelector("[data-carousel-toggle]");
 const screenshots = landingConfig.screenshots || [];
 const slides = [];
 const dots = [];
 let activeIndex = 0;
-let userPaused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let hovered = false;
-let focused = false;
+const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+let swipeStart = null;
 let autoplayTimer;
 
 function currentCopy() {
@@ -133,11 +127,6 @@ function updateCarouselLanguage() {
     dots[index].setAttribute("aria-label", `${copy.chooseImage}: ${alt}`);
   });
 
-  if (toggleButton) {
-    toggleButton.textContent = userPaused ? copy.resumeCarousel : copy.pauseCarousel;
-    toggleButton.setAttribute("aria-label", userPaused ? copy.resumeCarousel : copy.pauseCarousel);
-    toggleButton.setAttribute("aria-pressed", String(userPaused));
-  }
 }
 
 function updateSlides(announce = false) {
@@ -155,16 +144,15 @@ function updateSlides(announce = false) {
 }
 
 function scheduleAutoplay() {
-  window.clearInterval(autoplayTimer);
-  const canAdvance = carousel && screenshots.length > 1 && !userPaused && !hovered && !focused && !document.hidden;
+  window.clearTimeout(autoplayTimer);
+  const canAdvance = carousel && screenshots.length > 1 && !motionPreference.matches && !swipeStart && !document.hidden;
   if (!canAdvance) return;
-  autoplayTimer = window.setInterval(() => goToSlide(activeIndex + 1, false), landingConfig.carouselIntervalMs || 5600);
+  autoplayTimer = window.setTimeout(() => goToSlide(activeIndex + 1, false), landingConfig.carouselIntervalMs);
 }
 
 function goToSlide(index, manual = true) {
   if (!slides.length) return;
   activeIndex = (index + slides.length) % slides.length;
-  if (manual) userPaused = true;
   updateSlides(manual);
   updateCarouselLanguage();
   scheduleAutoplay();
@@ -196,43 +184,27 @@ if (carousel && slidesContainer && dotsContainer && screenshots.length) {
 
   previousButton?.addEventListener("click", () => goToSlide(activeIndex - 1));
   nextButton?.addEventListener("click", () => goToSlide(activeIndex + 1));
-  toggleButton?.addEventListener("click", () => {
-    userPaused = !userPaused;
-    if (!userPaused) focused = false;
-    updateCarouselLanguage();
-    scheduleAutoplay();
-  });
-
-  carousel.addEventListener("mouseenter", () => { hovered = true; scheduleAutoplay(); });
-  carousel.addEventListener("mouseleave", () => { hovered = false; scheduleAutoplay(); });
-  carousel.addEventListener("focusin", () => { focused = true; scheduleAutoplay(); });
-  carousel.addEventListener("focusout", (event) => {
-    if (!carousel.contains(event.relatedTarget)) {
-      focused = false;
-      scheduleAutoplay();
-    }
-  });
-
   const screen = document.querySelector("[data-carousel-screen]");
-  let touchStartX = null;
   screen?.addEventListener("pointerdown", (event) => {
-    if (event.pointerType === "touch") touchStartX = event.clientX;
-  }, { passive: true });
-  screen?.addEventListener("pointerup", (event) => {
-    if (touchStartX === null) return;
-    const distance = event.clientX - touchStartX;
-    touchStartX = null;
-    if (Math.abs(distance) > 40) goToSlide(activeIndex + (distance < 0 ? 1 : -1));
-  }, { passive: true });
-  screen?.addEventListener("pointercancel", () => { touchStartX = null; }, { passive: true });
-  document.addEventListener("visibilitychange", scheduleAutoplay);
-
-  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-  motionPreference.addEventListener?.("change", (event) => {
-    if (event.matches) userPaused = true;
-    updateCarouselLanguage();
+    if (!event.isPrimary || event.pointerType !== "touch") return;
+    swipeStart = { id: event.pointerId, x: event.clientX };
+    screen.setPointerCapture(event.pointerId);
     scheduleAutoplay();
   });
+  screen?.addEventListener("pointerup", (event) => {
+    if (swipeStart?.id !== event.pointerId) return;
+    const distance = event.clientX - swipeStart.x;
+    swipeStart = null;
+    if (Math.abs(distance) > 40) goToSlide(activeIndex + (distance < 0 ? 1 : -1));
+    else scheduleAutoplay();
+  });
+  screen?.addEventListener("lostpointercapture", (event) => {
+    if (swipeStart?.id !== event.pointerId) return;
+    swipeStart = null;
+    scheduleAutoplay();
+  });
+  document.addEventListener("visibilitychange", scheduleAutoplay);
+  motionPreference.addEventListener?.("change", scheduleAutoplay);
 
   updateSlides();
   updateCarouselLanguage();

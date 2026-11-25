@@ -200,7 +200,6 @@ h1 span { display: block; }
 .carousel-control:hover { border-color: var(--lime); }
 .carousel-control:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .carousel-control--arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.carousel-control--toggle { padding: 0 12px; font-size: 12px; font-weight: 700; }
 .carousel-dots { display: flex; align-items: center; gap: 6px; }
 .carousel-dot { width: 9px; height: 9px; min-width: 9px; min-height: 9px; padding: 0; border: 0; border-radius: 50%; background: #62676a; cursor: pointer; }
 .carousel-dot[aria-current="true"] { width: 22px; border-radius: 9px; background: var(--lime); }
@@ -261,7 +260,6 @@ h1 span { display: block; }
   .phone-frame__screen { border-radius: 27px; }
   .carousel-controls { gap: 8px; min-height: 38px; }
   .carousel-control { min-width: 34px; min-height: 34px; }
-  .carousel-control--toggle { padding: 0 10px; font-size: 11px; }
   .carousel-dots { gap: 5px; }
   .carousel-dot { width: 8px; height: 8px; min-width: 8px; min-height: 8px; }
   .carousel-dot[aria-current="true"] { width: 18px; }
@@ -279,7 +277,6 @@ h1 span { display: block; }
   .button { min-height: 41px; font-size: 12px; }
   .carousel-controls { gap: 6px; }
   .carousel-control { min-width: 32px; min-height: 32px; }
-  .carousel-control--toggle { padding: 0 8px; }
   .carousel-dots { gap: 4px; }
 }
 

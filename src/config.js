@@ -6,9 +6,9 @@ export const landingConfig = {
     { src: "assets/real-app/trends.jpeg", altKey: "trendsImageAlt" },
     { src: "assets/real-app/progress.jpeg", altKey: "progressImageAlt" },
   ],
-  carouselIntervalMs: 5600,
+  carouselIntervalMs: 4500,
   links: {
-    web: "https://pc-922.github.io/lift-web-pages/",
+    web: "https://pc-922.github.io/lift/web/",
     iosAppStore: "",
   },
 };
