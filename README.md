@@ -25,3 +25,5 @@ The landing site and the web app are independent GitHub Pages project sites. Pub
 ## iOS privacy and support pages
 
 The static bilingual pages live at `privacy/` and `support/` and are linked from the existing landing footer. Keep them in the same landing change; the Pages workflow publishes them from the site artifact. They use the contact supplied by PC922. Review the privacy copy and confirm the exact Pages URL before authorizing publication. Use the Pages deployment URL as the base; for a project site it includes the repository path. Pass the resulting HTTPS page URLs as `LIFT_PRIVACY_URL` and `LIFT_SUPPORT_URL` when building the iOS release. Do not assume the project URL is live until both routes resolve publicly.
+
+The separate LIFT Web privacy notice lives at `privacy-web/` and uses the same landing stylesheet. The web app links to this public page; do not move the existing iOS `privacy/` URL.
