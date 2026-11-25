@@ -8,7 +8,7 @@ export const landingConfig = {
   ],
   carouselIntervalMs: 5600,
   links: {
-    web: "https://pc-922.github.io/lift-web/",
+    web: "https://pc-922.github.io/lift-web-pages/",
     iosAppStore: "",
   },
 };
